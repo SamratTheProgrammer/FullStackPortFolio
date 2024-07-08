@@ -1,18 +1,29 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "main": "script.js",
+  "main": "form.js",
   "scripts": {
+    "start": "node form.js",
+    "dev": "nodemon form.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Samrat",
   "license": "ISC",
-  "description": "",
+  "description": "FullStackWebSite",
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "mysql": "^2.18.1",
     "node": "^22.4.0",
     "path": "^0.12.7"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamratTheProgrammer/FullStackPortFolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SamratTheProgrammer/FullStackPortFolio/issues"
+  },
+  "homepage": "https://github.com/SamratTheProgrammer/FullStackPortFolio#readme"
 }
