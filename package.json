@@ -12,12 +12,12 @@
   "description": "FullStackWebSite",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mysql": "^2.18.1",
     "node": "^22.4.0",
     "path": "^0.12.7"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SamratTheProgrammer/FullStackPortFolio.git"

@@ -1,38 +1,45 @@
+require('dotenv').config();
+
 const mysql = require("mysql");
-const con =mysql.createConnection({
-    host:"localhost",
-    user:"root",
-    password:"bca3rd30901222131",
-    database:"contact_info"
-});
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-const path=require('path');
+const path = require('path');
+
+const app = express();
+
+// Database connection
+const con = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+});
+
+// Middleware
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended: true}));
 
+// Routes
 app.get('/', function(req, res) {
   res.send("active");
 });
 
 app.post('/', function(req, res){
-  const full_name = req.body.full_name;
-  const email = req.body.email;
-  const mno = req.body.mno;
-  const text = req.body.text;
-  const sent_text = req.body.sent_text;
+  const {full_name, email, mno, text, sent_text} = req.body;
 
   con.connect(function(error){
     if(error) throw error;
-    const sql= "INSERT INTO contact(full_Name,email,mobile_Num,topic,message) VALUES(?,?,?,?,?)";
-    con.query(sql,[full_name,email,mno,text,sent_text],function(error,result){
+    const sql = "INSERT INTO contact(full_Name,email,mobile_Num,topic,message) VALUES(?,?,?,?,?)";
+    con.query(sql, [full_name, email, mno, text, sent_text], function(error, result){
       if(error) throw error;
       res.redirect('/thankyou.html');
     });
   });
 });
-app.listen(2000,()=>{
-    console.log('activate')
+
+// Start server
+const PORT = process.env.PORT || 2000;
+app.listen(PORT, () => {
+    console.log(`Server active on port ${PORT}`);
 });
