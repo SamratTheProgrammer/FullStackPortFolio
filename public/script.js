@@ -66,3 +66,12 @@ function adjustMarginTop() {
   }
   
   window.onload = adjustMarginTop;
+
+
+  const typed= new Typed('.multiple-text',{
+    strings:['Samrat Saha','Developer','Photographer'],
+    typeSpeed:100,
+    backSpeed:100,
+    backDelay:100,
+    loop:true
+})
